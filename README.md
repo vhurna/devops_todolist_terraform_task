@@ -13,7 +13,27 @@ To complete this task, Terraform and Azure CLI must be installed and configured 
 **2. Create Directory Structure**
 
 - Create the following directory structure:
-![alt text](image.png)
+```
+/
+├─ modules/
+│  ├─ network/
+│  │  ├─ main.tf
+│  │  ├─ variables.tf
+│  │  └─ outputs.tf
+│  ├─ compute/
+│  │  ├─ main.tf
+│  │  ├─ variables.tf
+│  │  └─ outputs.tf
+│  └─ storage/
+│     ├─ main.tf
+│     ├─ variables.tf
+│     └─ outputs.tf
+├─ main.tf
+├─ variables.tf
+├─ outputs.tf
+├─ terraform.tfvars
+└─ backend.tf
+```
 
 **3. Define Network Module**
 
@@ -28,7 +48,7 @@ To complete this task, Terraform and Azure CLI must be installed and configured 
 - The compute module will create a network interface, virtual machine, and VM extension for deploying the ToDo List application.
     * Network Interface: name it `${var.vm_name}-nic`.
     * Virtual Machine: name it `matebox`, image `Ubuntu2204`, size `Standard_B1s`, SSH key `linuxboxsshkey`.
-    * VM Extension: use `CustomScript` extension to execute `install-app.sh` script.
+    * VM Extension: use the `CustomScript` extension to execute `install-app.sh` script.
 
 
 **5. Define Storage Module**
@@ -39,7 +59,7 @@ To complete this task, Terraform and Azure CLI must be installed and configured 
 
 **6. Configure Remote State Backend**
 
-- Define the backend configuration in backend.tf to store the state in Azure Blob Storage. Use the following parameters:
+- Define the backend configuration in `backend.tf` to store the state in Azure Blob Storage. Use the following parameters:
     * Resource Group: `mate-azure-task-12`.
     * Storage Account: `yourstorageaccount`.
     * Container Name: `tfstate`.
@@ -47,7 +67,7 @@ To complete this task, Terraform and Azure CLI must be installed and configured 
 - Ensure that you have a storage account and container created for the remote state. This can be included in your `main.tf` or managed separately.
 
 **7. Use Modules in Main Configuration**
-- Define variables in variables.tf with the following parameters:
+- Define variables in `variables.tf` with the following parameters:
     * location: `uksouth`.
     * resource_group_name: `mate-azure-task-12`.
     * virtual_network_name: `vnet`.
