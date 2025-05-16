@@ -1,0 +1,34 @@
+# Terraform state and cache
+
+\*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.lock.info
+
+# Sensitive variable files
+
+\*.tfvars
+\*.tfvars.json
+secret.auto.tfvars
+override.tf
+\*\_override.tf
+
+# Crash logs
+
+crash.log
+
+# Azure CLI config
+
+.terraformrc
+terraform.rc
+
+# IDE & editor files
+
+.vscode/
+.idea/
+\*.swp
+\*.bak
+\*.tmp
+\*.iml
+.DS\_Store

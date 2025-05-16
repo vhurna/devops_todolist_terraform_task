@@ -18,6 +18,7 @@ cp -r devops_todolist_terraform_task/app/* /app
 
 # create a service for the app via systemctl and start the app
 mv /app/todoapp.service /etc/systemd/system/
+chmod +x start.sh
 systemctl daemon-reload
 systemctl start todoapp
 systemctl enable todoapp
